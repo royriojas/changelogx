@@ -31,15 +31,15 @@ module.exports = {
       //console.log(hook);
     },
     log: function ( cli ) {
-      var gitHelper = require( '../lib/git-helper' );
+      var cLog = require( '../lib/changelog' );
       var options = {
         tagPrefix: cli.opts.tagPrefix,
         tagRange: cli.opts.tagRange
       };
-      var p = gitHelper.getTags( options );
+      var p = cLog.getCommits( options );
 
-      p.then( function ( tags ) {
-        console.log( tags );
+      p.then( function ( data ) {
+        console.log( JSON.stringify(data, null, 2) );
       } );
     }
   },
