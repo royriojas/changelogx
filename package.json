@@ -37,9 +37,14 @@
     "clix": "^1.0.5",
     "es6-promise": "^2.0.1",
     "git-toplevel": "^1.0.1",
+    "lodash.capitalize": "^3.0.0",
     "lodash.merge": "^3.0.3",
+    "marked": "^0.3.3",
+    "moment": "^2.9.0",
     "read-file": "^0.1.2",
     "read-json-sync": "^1.1.0",
+    "stringformat": "0.0.5",
+    "twig": "^0.8.1",
     "write": "^0.1.1"
   },
   "devDependencies": {
@@ -52,5 +57,12 @@
     "proxyquire": "^1.4.0",
     "read-file": "^0.1.2",
     "watch-spawn": "^1.0.3"
+  },
+  "changelogx": {
+    "issueIDRegExp" : "\\b([A-Z][A-Z]\\d{4,})",
+    "commitURL": "https://github.com/royriojas/build-workflow/commit/{0}",
+    "authorURL": "https://github.com/{0}",
+    "issueIDURL": "https://github.com/royriojas/build-workflow/issues/{0}",
+    "projectName": "changelogx"
   }
 }

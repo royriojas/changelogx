@@ -3,6 +3,10 @@
 var path = require( 'path' );
 
 module.exports = {
+  configFile: {
+    defaultName: 'package.json',
+    description: 'Path to your `changelogx` config. By Default will look for a changelogx section on your `package.json`'
+  },
   pkgJSONPath: path.resolve( __dirname, '../package.json' ),
   //useDefaultOptions: true,
   optionator: {
@@ -14,7 +18,12 @@ module.exports = {
       {
         option: 'format',
         alias: 'f',
+        enum: [
+          'html',
+          'markdown'
+        ],
         type: 'String',
+        default: 'html',
         description: 'Use a specific output format. Markdown Or HTML or a custom module'
       },
       {

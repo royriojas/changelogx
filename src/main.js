@@ -4,6 +4,7 @@ var write = require( 'write' ).sync;
 var read = require( 'read-file' ).readFileSync;
 var gitDir = require( 'git-toplevel' );
 var fs = require( 'fs' );
+var nodeProcess = require( '../hooks/lib/process' );
 
 module.exports = {
   commands: {
@@ -28,18 +29,23 @@ module.exports = {
         fs.chmodSync( file, '755' );
         cli.ok( 'Done!' );
       } );
-      //console.log(hook);
     },
     log: function ( cli ) {
-      var cLog = require( '../lib/changelog' );
-      var options = {
-        tagPrefix: cli.opts.tagPrefix,
-        tagRange: cli.opts.tagRange
-      };
-      var p = cLog.getCommits( options );
+      var cfg = cli.getConfig().changelogx;
+      var opts = cli.opts;
 
-      p.then( function ( data ) {
-        console.log( JSON.stringify(data, null, 2) );
+      var p = require( './changelog' )( opts, cfg );
+
+      p.then( function ( text ) {
+
+        if ( !opts.outputFile ) {
+          nodeProcess.stdout.write( text );
+        } else {
+          write( path.resolve( nodeProcess.cwd(), opts.outputFile ), text );
+          cli.ok( 'Done!' );
+        }
+      } ).catch( function ( err ) {
+        console.log( 'err', err );
       } );
     }
   },

@@ -1,0 +1,9 @@
+{
+  "changelogx": {
+    "issueIDRegExp" : "\\b([A-Z][A-Z]\\d{4,})",
+    "commitURL": "https://github.com/royriojas/build-workflow/commit/{0}",
+    "authorURL": "https://github.com/{0}",
+    "issueIDURL": "https://github.com/royriojas/build-workflow/issues/{0}",
+    "projectName": "changelogx"
+  }
+}

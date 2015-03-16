@@ -1,0 +1,58 @@
+{% extends './base.html.twig' %}
+
+{% block metaContentDescription %} Project changelog {% endblock %}
+{% block title %} Changelog {{ it.projectName }}, {{ it.buildId }} {% endblock %}
+{% block stylesheets %} {% include './_styles.twig' %} {% endblock %}
+
+{% block body %}
+  <div class="main-container">
+    <h1 class="clog-title"><span>{{ it.projectName }} - Changelog</span></h1>
+    {% for group in it.groups %}
+      {% if it.hasCommits(group) %}
+        <h2 class="group-name">{{ group.name }}</h2>
+        <section class="clog-logs">
+          <ul>
+            {% for feature in group.commits|keys %}
+              <li>
+                <p>{{ it.renderFeature(feature) }}</p>
+                <ul>
+                {% for tag in group.commits[feature]|keys %}
+                  <li>
+                    <p>{{ tag }}</p>
+                    <ul>
+                      {% for log in group.commits[feature][tag] %}
+                        <li class="commit-entry-li">
+                          <div class="commit-entry">
+                            <hgroup class="markdown-body commit-group">
+                              <p class="commit-message">
+                                <a target="_blank" class="info-link hash" href="{{ it.format(it.commitURL, log.hash)}}"><span>{{ log.hash }}</span></a>
+
+                                <span>{{ it.renderDescription(log) }}</span>
+                                <span class="meta-data">
+                                  <a target="_blank" class="info-link author" href="{{ it.format(it.authorURL, log.author)}}"><span>{{ log.author }}</span></a>
+                                  <span class="commit-date">{{ it.renderDate(log.timestamp) }}</span>
+                                </span>
+                              </p>
+                            </hgroup>
+                            {% if log.body %}
+                              <div class="markdown-body commit-body">
+                                {{ it.renderBody(log.body) }}
+                              </div>
+                            {% endif %}
+                          </div>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </li>
+                {% endfor %}
+                </ul>
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endif %}
+    {% else %}
+      <div><p>No Commits found</p></div>
+    {% endfor %}
+  </div>
+{% endblock %}
