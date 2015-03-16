@@ -18,7 +18,7 @@ module.exports = {
       hook = hook.replace( /require\(\s*'\.\/lib\/process'\s*\);/g, 'process;' )
         .replace( /require\(\s*'\.\/lib\/cfg\.json'\s*\);/g, JSON.stringify( config, null, 2 ) + ';' )
         .replace( /require\(\s*'\.\/lib\/console'\s*\);/g, 'console;' )
-        .replace( /require\(\s*'\.\/lib\/parse-commit'\s*\);/g, require('../hooks/lib/parse-commit').toString())
+        .replace( /require\(\s*'\.\/lib\/parse-commit'\s*\);/g, require( '../hooks/lib/parse-commit' ).toString() )
         .replace( /\[COMMIT_HELP\]/g, helpMessage );
 
       gitDir().then( function ( dir ) {
@@ -30,17 +30,17 @@ module.exports = {
       } );
       //console.log(hook);
     },
-    log: function (cli) {
-      var gitHelper = require('../lib/git-helper');
+    log: function ( cli ) {
+      var gitHelper = require( '../lib/git-helper' );
       var options = {
         tagPrefix: cli.opts.tagPrefix,
         tagRange: cli.opts.tagRange
       };
-      var p = gitHelper.getTags(options);
+      var p = gitHelper.getTags( options );
 
-      p.then(function (tags) {
-        console.log(tags);
-      });
+      p.then( function ( tags ) {
+        console.log( tags );
+      } );
     }
   },
   run: function ( cli ) {

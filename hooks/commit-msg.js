@@ -91,7 +91,7 @@ var commitMsg = module.exports = {
     var errors = me._checkMessage( content );
 
     if ( errors.length === 0 ) {
-      me._ok( '\n>>>>> All good. Commit Message is valid <<<<<\n' );
+      me._log( '\n>>>>> All good. Commit Message is valid <<<<<\n' );
     } else {
       var text = me._getCommitErrorMessage();
       me._log( text.replace( '[SUBJECT_LIMIT]', cfg.maxSubjectLength ), '\n' );
