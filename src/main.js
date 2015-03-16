@@ -31,8 +31,13 @@ module.exports = {
       } );
     },
     log: function ( cli ) {
-      var cfg = cli.getConfig().changelogx;
+
       var opts = cli.opts;
+      if ( !opts.outputFile ) {
+        opts.quiet = true;
+      }
+
+      var cfg = cli.getConfig().changelogx;
 
       var p = require( './changelog' )( opts, cfg );
 

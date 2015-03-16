@@ -44,7 +44,7 @@ module.exports = {
         option: 'outputFile',
         alias: 'o',
         type: 'path::String',
-        description: 'Specify file to write the changelog to. If omitted the output will be printed to the stdout'
+        description: 'Specify file to write the changelog to. If omitted the output will be printed to the stdout. IF this option is set no other logs will print to stdout (-q is implicit here)'
       },
       {
         option: 'maxSubjectLength',
