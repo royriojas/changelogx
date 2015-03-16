@@ -1,0 +1,23 @@
+{% block body %}
+
+# {{ it.projectName }} - Changelog
+{% for group in it.groups %}
+{% if it.hasCommits(group) %}
+## {{ group.name }}
+{% for feature in group.commits|keys %}
+{% if feature != 'Uncategorized' %}
+#### {{ it.renderFeature(feature) }}
+{% endif %}
+{% for tag in group.commits[feature]|keys %}
+- **{{ tag }}**
+{% for log in group.commits[feature][tag] %}
+  - {{ it.renderDescription(log) }} - [{{ log.hash }}]( {{ it.format(it.commitURL, log.hash) }} ), [{{ log.author }}]({{ it.format(it.authorURL, log.author) }}), {{ it.renderDate(log.timestamp) }}
+    {{ it.renderBody(log.body) }}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% endif %}
+{% else %}
+No Commits found
+{% endfor %}
+{% endblock %}
