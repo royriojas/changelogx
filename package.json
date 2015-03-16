@@ -4,12 +4,13 @@
   "description": "Yet another changelog generator from git commits, based on conventions and with an optional hook to enforce the rules",
   "main": "index.js",
   "scripts": {
-    "beautify": "esbeautifier index.js 'src/**/*.js' 'lib/**/*.js' 'bin/**/*.js' 'specs/**/*.js'",
-    "beautify-check": "esbeautifier -k index.js 'src/**/*.js' 'lib/**/*.js' 'bin/**/*.js' 'specs/**/*.js'",
-    "eslint": "eslint --format 'node_modules/eslint-friendly-formatter' index.js lib/ bin/ src/ specs/ -c './configs/eslint.json'",
+    "beautify": "esbeautifier index.js 'src/**/*.js' 'lib/**/*.js' 'bin/**/*.js' 'specs/**/*.js' 'hooks/**/*.js'",
+    "beautify-check": "esbeautifier -k index.js 'src/**/*.js' 'lib/**/*.js' 'bin/**/*.js' 'specs/**/*.js' 'hooks/**/*.js'",
+    "eslint": "eslint --format 'node_modules/eslint-friendly-formatter' index.js lib/ bin/ src/ specs/ hooks/ -c './configs/eslint.json'",
     "test": "mocha-runner 'specs/**/*.js'",
     "cover": "istanbul cover -x 'specs/**/*.js' mocha-runner 'specs/**/*.js' html text-summary",
     "watch": "npm run cover && watch-spawn -p 'specs/**/*.js' -p 'index.js' -p 'src/**/*.js' npm run cover",
+    "check": "npm run beautify && npm run eslint && npm test",
     "prepush": "npm run beautify-check && npm run eslint && npm test"
   },
   "bin": {
@@ -33,7 +34,11 @@
     "npm run prepush"
   ],
   "dependencies": {
-    "clix": "^1.0.5"
+    "clix": "^1.0.5",
+    "git-toplevel": "^1.0.1",
+    "read-file": "^0.1.2",
+    "read-json-sync": "^1.1.0",
+    "write": "^0.1.1"
   },
   "devDependencies": {
     "esbeautifier": "^2.0.1",

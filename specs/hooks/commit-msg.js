@@ -1,78 +1,81 @@
 describe( 'commit-msg', function () {
   var proxyquire = require( 'proxyquire' ).noCallThru().noPreserveCache();
   var path = require( 'path' );
-
-  var loadFileSync = require('read-file').readFileSync;
-
+  var read = require( 'read-file' ).readFileSync;
 
   beforeEach( function () {
 
     var me = this;
+
+    me.mockFs = function ( _file ) {
+      return {
+        readFileSync: function ( /* file , opts */ ) {
+          //if ( file === 'commitFile' ) {
+          return read( path.resolve( __dirname, _file ) );
+          //}
+        }
+      };
+    };
+
     me.mockProcess = me.sandbox.createSpyObj( 'process', [
       'exit'
     ] );
-    me.mockLog = me.sandbox.createSpyObj( 'log', [
+    me.mockProcess.argv = [
+      'node',
+      'script',
+      ''
+    ];
+
+    me.mockConsole = me.sandbox.createSpyObj( 'console', [
       'log',
       'error'
-    ] );
-    me.mockUtil = me.sandbox.createSpyObj( 'util', [
-      'createStream',
-      'showTitleBlock',
-      'showErrorBlock',
-      'showError',
-      'showSuccessBlock'
     ] );
 
   } );
 
   afterEach( function () {} );
 
-  it( 'should validate a commit message with a feature', function () {
+  it( 'should fail in case on an empty commit file', function () {
     var me = this;
-    var mockFs = {
-      readFileSync: function ( file /*, opts */ ) {
-        if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../fixtures/commits/good-commit-feature.txt' ) );
-        }
-      }
-    };
+    var mockFs = me.mockFs( '../fixtures/commits/good-commit-feature.txt' );
 
-    me.sandbox.spy( mockFs, 'readFileSync' );
-    var exitSpy = me.mockProcess.exit;
-
-    var commitMessage = proxyquire( '../../hooks/lib/commit-msg', {
+    proxyquire( '../../hooks/commit-msg.js', {
       fs: mockFs,
-      './process': me.mockProcess,
-      './console': me.mockLog,
-      './util': me.mockUtil
+      './lib/process': me.mockProcess,
+      './lib/console': me.mockConsole
     } );
 
-    commitMessage( 'commitFile' );
-
-    expect( exitSpy ).to.not.have.been.called;
+    expect( me.mockProcess.exit ).to.have.been.calledWith( 1 );
 
   } );
 
-  it( 'should validate a commit message with a feature', function () {
+  it( 'should allow well formatted commits', function () {
     var me = this;
-    var mockFs = {
-      readFileSync: function ( file /*, opts */ ) {
-        if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../fixtures/commits/good-commit-no-feature.txt' ) );
-        }
-      }
-    };
+    var mockFs = me.mockFs( '../fixtures/commits/good-commit-feature.txt' );
 
-    me.sandbox.spy( mockFs, 'readFileSync' );
+    me.mockProcess.argv[ 2 ] = 'commit-file';
 
-    var commitMessage = proxyquire( '../../hooks/lib/commit-msg', {
+    proxyquire( '../../hooks/commit-msg.js', {
       fs: mockFs,
-      './process': me.mockProcess,
-      './console': me.mockLog,
-      './util': me.mockUtil
+      './lib/process': me.mockProcess,
+      './lib/console': me.mockConsole
     } );
 
-    commitMessage( 'commitFile' );
+    expect( me.mockProcess.exit ).to.not.have.been.called;
+
+  } );
+
+  it( 'should allow messages with no feature tags', function () {
+    var me = this;
+    var mockFs = me.mockFs( '../fixtures/commits/good-commit-no-feature.txt' );
+
+    me.mockProcess.argv[ 2 ] = 'commit-file';
+
+    proxyquire( '../../hooks/commit-msg.js', {
+      fs: mockFs,
+      './lib/process': me.mockProcess,
+      './lib/console': me.mockConsole
+    } );
 
     expect( me.mockProcess.exit ).to.not.have.been.called;
 
@@ -80,109 +83,61 @@ describe( 'commit-msg', function () {
 
   it( 'should fail if a commit message does not have a tag', function () {
     var me = this;
-    var mockFs = {
-      readFileSync: function ( file, opts ) {
-        if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../fixtures/commits/bad-commit-no-tag.txt' ) );
-        }
-        else {
-          return loadFileSync( file, opts );
-        }
-      }
-    };
+    var mockFs = me.mockFs( '../fixtures/commits/bad-commit-no-tag.txt' );
 
-    me.sandbox.spy( mockFs, 'readFileSync' );
+    me.mockProcess.argv[ 2 ] = 'commit-file';
 
-    var commitMessage = proxyquire( '../../hooks/lib/commit-msg', {
+    proxyquire( '../../hooks/commit-msg.js', {
       fs: mockFs,
-      './process': me.mockProcess,
-      './console': me.mockLog,
-      './util': me.mockUtil
+      './lib/process': me.mockProcess,
+      './lib/console': me.mockConsole
     } );
 
-    commitMessage( 'commitFile' );
-
     expect( me.mockProcess.exit ).to.have.been.calledWith( 1 );
-
   } );
 
   it( 'should fail if a commit message is too long', function () {
     var me = this;
-    var mockFs = {
-      readFileSync: function ( file, opts) {
-        if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../fixtures/commits/bad-commit-too-long.txt' ) );
-        }
-        else {
-          return loadFileSync( file, opts );
-        }
-      }
-    };
+    var mockFs = me.mockFs( '../fixtures/commits/bad-commit-too-long.txt' );
 
-    me.sandbox.spy( mockFs, 'readFileSync' );
+    me.mockProcess.argv[ 2 ] = 'commit-file';
 
-    var commitMessage = proxyquire( '../../hooks/lib/commit-msg', {
+    proxyquire( '../../hooks/commit-msg.js', {
       fs: mockFs,
-      './process': me.mockProcess,
-      './console': me.mockLog,
-      './util': me.mockUtil
+      './lib/process': me.mockProcess,
+      './lib/console': me.mockConsole
     } );
 
-    commitMessage( 'commitFile' );
-
     expect( me.mockProcess.exit ).to.have.been.calledWith( 1 );
-
   } );
 
   it( 'should fail if a commit message contains an invalid tag', function () {
     var me = this;
-    var mockFs = {
-      readFileSync: function ( file, opts ) {
-        if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../fixtures/commits/bad-commit-invalid-tag.txt' ) );
-        }else {
-          return loadFileSync( file, opts );
-        }
-      }
-    };
+    var mockFs = me.mockFs( '../fixtures/commits/bad-commit-invalid-tag.txt' );
 
-    me.sandbox.spy( mockFs, 'readFileSync' );
+    me.mockProcess.argv[ 2 ] = 'commit-file';
 
-    var commitMessage = proxyquire( '../../hooks/lib/commit-msg', {
+    proxyquire( '../../hooks/commit-msg.js', {
       fs: mockFs,
-      './process': me.mockProcess,
-      './console': me.mockLog,
-      './util': me.mockUtil
+      './lib/process': me.mockProcess,
+      './lib/console': me.mockConsole
     } );
 
-    commitMessage( 'commitFile' );
-
     expect( me.mockProcess.exit ).to.have.been.calledWith( 1 );
-
   } );
 
   it( 'should fail if a commit message does not contain a separation line', function () {
     var me = this;
-    var mockFs = {
-      readFileSync: function ( file, opts ) {
-        if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../fixtures/commits/bad-commit-no-new-line.txt' ) );
-        } else {
-          return loadFileSync( file, opts );
-        }
-      }
-    };
+    var mockFs = me.mockFs( '../fixtures/commits/bad-commit-no-new-line.txt' );
 
-    me.sandbox.spy( mockFs, 'readFileSync' );
+    me.mockProcess.argv[ 2 ] = 'commit-file';
 
-    var commitMessage = proxyquire( '../../hooks/lib/commit-msg', {
+    proxyquire( '../../hooks/commit-msg.js', {
       fs: mockFs,
-      './process': me.mockProcess,
-      './console': me.mockLog,
-      './util': me.mockUtil
+      './lib/process': me.mockProcess,
+      './lib/console': me.mockConsole
     } );
 
-    commitMessage( 'commitFile' );
     expect( me.mockProcess.exit ).to.have.been.calledWith( 1 );
 
   } );
