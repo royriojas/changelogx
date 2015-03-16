@@ -1,17 +1,19 @@
 {
   "name": "changelogx",
   "version": "1.0.0",
-  "description": "Yet another changelog generator from git, based on conventions and with an optional hook to enforce the rules",
+  "description": "Yet another changelog generator from git commits, based on conventions and with an optional hook to enforce the rules",
   "main": "index.js",
   "scripts": {
-    "beautify": "node ./configs/beautify.js",
-    "lint": "eslint --format './index.js' index.js test/ -c './configs/eslint.json'",
-    "test": "mocha -R spec test/specs",
-    "cover": "istanbul cover test/runner.js html text-summary",
-    "watch": "watch-run -i -p 'test/specs/**/*.js' istanbul cover test/runner.js html text-summary"
+    "beautify": "esbeautifier index.js 'src/**/*.js' 'lib/**/*.js' 'bin/**/*.js' 'specs/**/*.js'",
+    "beautify-check": "esbeautifier -k index.js 'src/**/*.js' 'lib/**/*.js' 'bin/**/*.js' 'specs/**/*.js'",
+    "eslint": "eslint --format 'node_modules/eslint-friendly-formatter' index.js lib/ bin/ src/ specs/ -c './configs/eslint.json'",
+    "test": "mocha-runner 'specs/**/*.js'",
+    "cover": "istanbul cover -x 'specs/**/*.js' mocha-runner 'specs/**/*.js' html text-summary",
+    "watch": "npm run cover && watch-spawn -p 'specs/**/*.js' -p 'index.js' -p 'src/**/*.js' npm run cover",
+    "prepush": "npm run beautify-check && npm run eslint && npm test"
   },
   "bin": {
-    "changelogx": "./bin/changelogx.js"
+    "changelogx": "./bin/cli.js"
   },
   "keywords": [
     "changelog",
@@ -21,20 +23,27 @@
     "commits",
     "tags"
   ],
-  "author": "Roy Riojas",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/royriojas/changelogx"
+  },
   "license": "MIT",
+  "author": "Roy Riojas (http://royriojas.com)",
+  "prepush": [
+    "npm run prepush"
+  ],
   "dependencies": {
-    "glob-expand": "0.0.2",
-    "lodash.merge": "^3.0.2",
-    "optionator": "^0.5.0"
+    "clix": "^1.0.5"
   },
   "devDependencies": {
-    "chai": "^2.1.1",
-    "istanbul": "^0.3.7",
-    "mocha": "^2.2.0",
+    "esbeautifier": "^2.0.1",
+    "eslint": "^0.17.0",
+    "eslint-friendly-formatter": "^1.0.3",
+    "istanbul": "^0.3.8",
+    "mocha-runner": "^1.0.5",
+    "prepush": "^1.0.3",
     "proxyquire": "^1.4.0",
-    "sinon": "^1.13.0",
-    "sinon-chai": "^2.7.0",
-    "watch-run": "^1.2.2"
+    "read-file": "^0.1.2",
+    "watch-spawn": "^1.0.3"
   }
 }

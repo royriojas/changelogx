@@ -1,14 +1,10 @@
-var proxyquire = require( 'proxyquire' ).noCallThru().noPreserveCache();
-var path = require( 'path' );
-var fs = require( 'fs' );
-
-var loadFileSync = function ( file ) {
-  return fs.readFileSync( file, {
-    encoding: 'utf8'
-  } );
-};
-
 describe( 'commit-msg', function () {
+  var proxyquire = require( 'proxyquire' ).noCallThru().noPreserveCache();
+  var path = require( 'path' );
+
+  var loadFileSync = require('read-file').readFileSync;
+
+
   beforeEach( function () {
 
     var me = this;
@@ -36,7 +32,7 @@ describe( 'commit-msg', function () {
     var mockFs = {
       readFileSync: function ( file /*, opts */ ) {
         if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/good-commit-feature.txt' ) );
+          return loadFileSync( path.resolve( __dirname, '../fixtures/commits/good-commit-feature.txt' ) );
         }
       }
     };
@@ -44,7 +40,7 @@ describe( 'commit-msg', function () {
     me.sandbox.spy( mockFs, 'readFileSync' );
     var exitSpy = me.mockProcess.exit;
 
-    var commitMessage = proxyquire( '../../../resources/hooks/lib/commit-msg.js', {
+    var commitMessage = proxyquire( '../../hooks/lib/commit-msg', {
       fs: mockFs,
       './process': me.mockProcess,
       './console': me.mockLog,
@@ -62,14 +58,14 @@ describe( 'commit-msg', function () {
     var mockFs = {
       readFileSync: function ( file /*, opts */ ) {
         if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/good-commit-no-feature.txt' ) );
+          return loadFileSync( path.resolve( __dirname, '../fixtures/commits/good-commit-no-feature.txt' ) );
         }
       }
     };
 
     me.sandbox.spy( mockFs, 'readFileSync' );
 
-    var commitMessage = proxyquire( '../../../resources/hooks/lib/commit-msg.js', {
+    var commitMessage = proxyquire( '../../hooks/lib/commit-msg', {
       fs: mockFs,
       './process': me.mockProcess,
       './console': me.mockLog,
@@ -85,16 +81,19 @@ describe( 'commit-msg', function () {
   it( 'should fail if a commit message does not have a tag', function () {
     var me = this;
     var mockFs = {
-      readFileSync: function ( file /*, opts */ ) {
+      readFileSync: function ( file, opts ) {
         if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-no-tag.txt' ) );
+          return loadFileSync( path.resolve( __dirname, '../fixtures/commits/bad-commit-no-tag.txt' ) );
+        }
+        else {
+          return loadFileSync( file, opts );
         }
       }
     };
 
     me.sandbox.spy( mockFs, 'readFileSync' );
 
-    var commitMessage = proxyquire( '../../../resources/hooks/lib/commit-msg.js', {
+    var commitMessage = proxyquire( '../../hooks/lib/commit-msg', {
       fs: mockFs,
       './process': me.mockProcess,
       './console': me.mockLog,
@@ -110,16 +109,19 @@ describe( 'commit-msg', function () {
   it( 'should fail if a commit message is too long', function () {
     var me = this;
     var mockFs = {
-      readFileSync: function ( file /*, opts */ ) {
+      readFileSync: function ( file, opts) {
         if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-too-long.txt' ) );
+          return loadFileSync( path.resolve( __dirname, '../fixtures/commits/bad-commit-too-long.txt' ) );
+        }
+        else {
+          return loadFileSync( file, opts );
         }
       }
     };
 
     me.sandbox.spy( mockFs, 'readFileSync' );
 
-    var commitMessage = proxyquire( '../../../resources/hooks/lib/commit-msg.js', {
+    var commitMessage = proxyquire( '../../hooks/lib/commit-msg', {
       fs: mockFs,
       './process': me.mockProcess,
       './console': me.mockLog,
@@ -135,16 +137,18 @@ describe( 'commit-msg', function () {
   it( 'should fail if a commit message contains an invalid tag', function () {
     var me = this;
     var mockFs = {
-      readFileSync: function ( file ) {
+      readFileSync: function ( file, opts ) {
         if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-invalid-tag.txt' ) );
+          return loadFileSync( path.resolve( __dirname, '../fixtures/commits/bad-commit-invalid-tag.txt' ) );
+        }else {
+          return loadFileSync( file, opts );
         }
       }
     };
 
     me.sandbox.spy( mockFs, 'readFileSync' );
 
-    var commitMessage = proxyquire( '../../../resources/hooks/lib/commit-msg.js', {
+    var commitMessage = proxyquire( '../../hooks/lib/commit-msg', {
       fs: mockFs,
       './process': me.mockProcess,
       './console': me.mockLog,
@@ -162,16 +166,16 @@ describe( 'commit-msg', function () {
     var mockFs = {
       readFileSync: function ( file, opts ) {
         if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-no-new-line.txt' ) );
+          return loadFileSync( path.resolve( __dirname, '../fixtures/commits/bad-commit-no-new-line.txt' ) );
         } else {
-          return fs.readFileSync( file, opts );
+          return loadFileSync( file, opts );
         }
       }
     };
 
     me.sandbox.spy( mockFs, 'readFileSync' );
 
-    var commitMessage = proxyquire( '../../../resources/hooks/lib/commit-msg.js', {
+    var commitMessage = proxyquire( '../../hooks/lib/commit-msg', {
       fs: mockFs,
       './process': me.mockProcess,
       './console': me.mockLog,

@@ -1,6 +1,6 @@
 describe( 'parse-commit', function () {
 
-  var parseCommit = require( '../../hooks/lib/parse-commit' );
+  var parseCommit = require( '../../../hooks/lib/parse-commit' );
 
   it( 'should parse a commit', function () {
 
