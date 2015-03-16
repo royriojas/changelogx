@@ -702,7 +702,10 @@ body {
 }
 
 .markdown-body.commit-group p {
-
+  margin-right: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .commit-message {
@@ -782,7 +785,73 @@ h2.group-name {
   <body>
     <div class="main-container">
     <h1 class="clog-title"><span>changelogx - Changelog</span></h1>
-                            <h2 class="group-name">v1.0.2</h2>
+                            <h2 class="group-name">v1.0.3</h2>
+        <section class="clog-logs">
+          <ul>
+                          <li>
+                <p>Uncategorized
+</p>
+                <ul>
+                                  <li>
+                    <p>Build Scripts Changes</p>
+                    <ul>
+                                              <li class="commit-entry-li">
+                          <div class="commit-entry">
+                            <hgroup class="markdown-body commit-group">
+                              <p class="commit-message">
+                                <a target="_blank" class="info-link hash" href="https://github.com/royriojas/changelogx/commit/92ef7d2"><span>92ef7d2</span></a>
+
+                                <span>Release v1.0.3
+</span>
+                                <span class="meta-data">
+                                  <a target="_blank" class="info-link author" href="https://github.com/Roy Riojas"><span>Roy Riojas</span></a>
+                                  <span class="commit-date">16/03/2015 14:22:51</span>
+                                </span>
+                              </p>
+                            </hgroup>
+                                                      </div>
+                        </li>
+                                          </ul>
+                  </li>
+                                </ul>
+              </li>
+                          <li>
+                <p>Formatters
+</p>
+                <ul>
+                                  <li>
+                    <p>Features</p>
+                    <ul>
+                                              <li class="commit-entry-li">
+                          <div class="commit-entry">
+                            <hgroup class="markdown-body commit-group">
+                              <p class="commit-message">
+                                <a target="_blank" class="info-link hash" href="https://github.com/royriojas/changelogx/commit/c5e749c"><span>c5e749c</span></a>
+
+                                <span>Only print output messages in case of outputFile option especified
+</span>
+                                <span class="meta-data">
+                                  <a target="_blank" class="info-link author" href="https://github.com/Roy Riojas"><span>Roy Riojas</span></a>
+                                  <span class="commit-date">16/03/2015 14:20:43</span>
+                                </span>
+                              </p>
+                            </hgroup>
+                                                          <div class="markdown-body commit-body">
+                                <ul>
+<li>When the option <code>outputFile</code> is ommited, then only the output of the formatter will
+be directed to the standard output. is like the option <code>--quiet, -q</code> is implicit</li>
+</ul>
+
+                              </div>
+                                                      </div>
+                        </li>
+                                          </ul>
+                  </li>
+                                </ul>
+              </li>
+                      </ul>
+        </section>
+                        <h2 class="group-name">v1.0.2</h2>
         <section class="clog-logs">
           <ul>
                           <li>
