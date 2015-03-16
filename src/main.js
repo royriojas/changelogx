@@ -29,6 +29,18 @@ module.exports = {
         cli.ok( 'Done!' );
       } );
       //console.log(hook);
+    },
+    log: function (cli) {
+      var gitHelper = require('../lib/git-helper');
+      var options = {
+        tagPrefix: cli.opts.tagPrefix,
+        tagRange: cli.opts.tagRange
+      };
+      var p = gitHelper.getTags(options);
+
+      p.then(function (tags) {
+        console.log(tags);
+      });
     }
   },
   run: function ( cli ) {

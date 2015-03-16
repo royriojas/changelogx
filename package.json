@@ -36,6 +36,7 @@
   "dependencies": {
     "clix": "^1.0.5",
     "git-toplevel": "^1.0.1",
+    "lodash.merge": "^3.0.3",
     "read-file": "^0.1.2",
     "read-json-sync": "^1.1.0",
     "write": "^0.1.1"
