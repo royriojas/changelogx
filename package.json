@@ -59,7 +59,7 @@
     "watch-spawn": "^1.0.3"
   },
   "changelogx": {
-    "issueIDRegExp" : "\\b([A-Z][A-Z]\\d{4,})",
+    "issueIDRegExp" : "#(\\d+)",
     "commitURL": "https://github.com/royriojas/changelogx/commit/{0}",
     "authorURL": "https://github.com/{0}",
     "issueIDURL": "https://github.com/royriojas/changelogx/issues/{0}",

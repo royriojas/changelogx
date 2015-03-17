@@ -24,14 +24,14 @@ module.exports = {
         ],
         type: 'String',
         default: 'html',
-        description: 'Use a specific output format. Markdown Or HTML or a custom module'
+        description: 'Use a specific output format, markdown or html.'
       },
       {
         option: 'tagPrefix',
         type: 'String',
         alias: 'p',
         default: '',
-        description: 'The tag prefix to filter the tags obtained from git'
+        description: 'The tag prefix to filter the tags obtained from git.'
       },
       {
         option: 'tagRange',
