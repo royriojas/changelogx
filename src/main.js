@@ -39,7 +39,7 @@ module.exports = {
 
       var cfg = cli.getConfig().changelogx;
 
-      var p = require( './changelog' )( opts, cfg );
+      var p = require( '../index' )( opts, cfg );
 
       p.then( function ( text ) {
 

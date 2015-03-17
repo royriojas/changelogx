@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-var path = require( 'path' );
 var nProcess = require( './lib/process' );
 var nConsole = require( './lib/console' );
 var hookCfg = require( './lib/cfg.json' );
