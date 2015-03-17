@@ -1,0 +1,29 @@
+{% for tag in group.commits[feature]|keys %}
+  <li>
+    <p>{{ tag }}</p>
+    <ul>
+      {% for log in group.commits[feature][tag] %}
+        <li class="commit-entry-li">
+          <div class="commit-entry">
+            <hgroup class="markdown-body commit-group">
+              <p class="commit-message">
+                <a target="_blank" class="info-link hash" href="{{ it.format(it.commitURL, log.hash)}}"><span>{{ log.hash }}</span></a>
+
+                <span>{{ it.renderDescription(log) }}</span>
+                                <span class="meta-data">
+                                  <a target="_blank" class="info-link author" href="{{ it.format(it.authorURL, log.author)}}"><span>{{ log.author }}</span></a>
+                                  <span class="commit-date">{{ it.renderDate(log.timestamp) }}</span>
+                                </span>
+              </p>
+            </hgroup>
+            {% if log.body %}
+              <div class="markdown-body commit-body">
+                {{ it.renderBody(log.body) }}
+              </div>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </li>
+{% endfor %}

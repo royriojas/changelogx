@@ -13,40 +13,16 @@
         <section class="clog-logs">
           <ul>
             {% for feature in group.commits|keys %}
-              <li>
-                <p>{{ it.renderFeature(feature) }}</p>
-                <ul>
-                {% for tag in group.commits[feature]|keys %}
-                  <li>
-                    <p>{{ tag }}</p>
-                    <ul>
-                      {% for log in group.commits[feature][tag] %}
-                        <li class="commit-entry-li">
-                          <div class="commit-entry">
-                            <hgroup class="markdown-body commit-group">
-                              <p class="commit-message">
-                                <a target="_blank" class="info-link hash" href="{{ it.format(it.commitURL, log.hash)}}"><span>{{ log.hash }}</span></a>
-
-                                <span>{{ it.renderDescription(log) }}</span>
-                                <span class="meta-data">
-                                  <a target="_blank" class="info-link author" href="{{ it.format(it.authorURL, log.author)}}"><span>{{ log.author }}</span></a>
-                                  <span class="commit-date">{{ it.renderDate(log.timestamp) }}</span>
-                                </span>
-                              </p>
-                            </hgroup>
-                            {% if log.body %}
-                              <div class="markdown-body commit-body">
-                                {{ it.renderBody(log.body) }}
-                              </div>
-                            {% endif %}
-                          </div>
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  </li>
-                {% endfor %}
-                </ul>
-              </li>
+              {% if feature == 'Uncategorized' %}
+                {% include './_tags.twig' with { it: it, group: group }%}
+              {% else %}
+                <li>
+                  <p><b>{{ it.renderFeature(feature) }}</b></p>
+                  <ul>
+                    {% include './_tags.twig' with { it: it, group: group } %}
+                  </ul>
+                </li>
+              {% endif %}
             {% endfor %}
           </ul>
         </section>
