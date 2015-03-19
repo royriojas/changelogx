@@ -5,7 +5,7 @@ var path = require( 'path' );
 module.exports = {
   configFile: {
     defaultName: 'package.json',
-    description: 'Path to your `changelogx` config. By Default will look for a changelogx section on your `package.json`'
+    description: 'Path to your `changelogx` config. By Default will look for a `changelogx` section on your `package.json`'
   },
   pkgJSONPath: path.resolve( __dirname, '../package.json' ),
   //useDefaultOptions: true,
