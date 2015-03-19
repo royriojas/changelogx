@@ -1,5 +1,24 @@
 
 # changelogx - Changelog
+## v1.0.7
+- **Build Scripts Changes**
+  - Release v1.0.7 - [ac17071]( https://github.com/royriojas/changelogx/commit/ac17071 ), [Roy Riojas](https://github.com/Roy Riojas), 19/03/2015 00:26:14
+    
+#### changelog
+- **Build Scripts Changes**
+  - Add changelog task - [6b7945e]( https://github.com/royriojas/changelogx/commit/6b7945e ), [Roy Riojas](https://github.com/Roy Riojas), 19/03/2015 00:25:41
+    
+## v1.0.6
+- **Build Scripts Changes**
+  - Release v1.0.6 - [47dcffa]( https://github.com/royriojas/changelogx/commit/47dcffa ), [Roy Riojas](https://github.com/Roy Riojas), 19/03/2015 00:23:46
+    
+- **Documentation**
+  - Genereated Readme - [2337bcf]( https://github.com/royriojas/changelogx/commit/2337bcf ), [Roy Riojas](https://github.com/Roy Riojas), 16/03/2015 19:06:19
+    
+#### options
+- **Documentation**
+  - minor change in style of the help - [a2c03ec]( https://github.com/royriojas/changelogx/commit/a2c03ec ), [Roy Riojas](https://github.com/Roy Riojas), 19/03/2015 00:23:36
+    
 ## v1.0.5
 - **Build Scripts Changes**
   - Release v1.0.5 - [6258a8e]( https://github.com/royriojas/changelogx/commit/6258a8e ), [Roy Riojas](https://github.com/Roy Riojas), 16/03/2015 19:05:39
