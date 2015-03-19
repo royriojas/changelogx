@@ -11,7 +11,8 @@
     "cover": "istanbul cover -x 'specs/**/*.js' mocha-runner 'specs/**/*.js' html text-summary",
     "watch": "npm run cover && watch-spawn -p 'specs/**/*.js' -p 'index.js' -p 'src/**/*.js' npm run cover",
     "check": "npm run beautify && npm run eslint && npm test",
-    "prepush": "npm run beautify-check && npm run eslint && npm test"
+    "prepush": "npm run beautify-check && npm run eslint && npm test",
+    "changelog": "./bin/cli.js -f markdown -o ./changelog.md"
   },
   "bin": {
     "changelogx": "./bin/cli.js"
