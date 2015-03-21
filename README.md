@@ -15,9 +15,9 @@ npm i -g changelogx
 {
   "changelogx": {
     "issueIDRegExp" : "#(\\d+)", // regular expression to match issues found inside the changelog
-    "commitURL": "https://github.com/royriojas/changelogx/commit/{0}", the url for commits
-    "authorURL": "https://github.com/{0}", the url for the authors
-    "issueIDURL": "https://github.com/royriojas/changelogx/issues/{0}", the url for the issues
+    "commitURL": "https://github.com/royriojas/changelogx/commit/{0}", //the url for commits
+    "authorURL": "https://github.com/{0}", //the url for the authors
+    "issueIDURL": "https://github.com/royriojas/changelogx/issues/{0}", //the url for the issues
     "projectName": "changelogx" // the name of the project
   }
 }
