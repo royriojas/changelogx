@@ -43,8 +43,8 @@ module.exports = {
       var cfg = cli.getConfig().changelogx;
 
       if ( !cfg ) {
-        cli.subtle( '>> changelogx configuration not found on ', cli.configFile );
-        cfg = this._getConfig();
+        cli.subtle( '>> changelogx configuration not found on ', cli.pathToConfig );
+        cfg = this._getConfig().changelogx;
 
         cli.subtle( '>> The following configuration will be used, based on your package.json. Please check it is correct: ' );
         cli.subtle( '\n\n' + JSON.stringify( cfg, null, 2 ) + '\n\n' );

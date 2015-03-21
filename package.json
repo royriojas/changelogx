@@ -1,6 +1,6 @@
 {
   "name": "changelogx",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Yet another changelog generator from git commits, based on conventions and with an optional hook to enforce the rules",
   "main": "index.js",
   "scripts": {
@@ -61,12 +61,5 @@
     "proxyquire": "^1.4.0",
     "read-file": "^0.1.2",
     "watch-spawn": "^1.0.3"
-  },
-  "changelogx": {
-    "issueIDRegExp": "#(\\d+)",
-    "commitURL": "https://github.com/royriojas/changelogx/commit/{0}",
-    "authorURL": "https://github.com/{0}",
-    "issueIDURL": "https://github.com/royriojas/changelogx/issues/{0}",
-    "projectName": "changelogx"
   }
 }
