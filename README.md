@@ -23,6 +23,10 @@ npm i -g changelogx
 }
 ```
 
+If no configuration file is provided or no `changelogx` configuration is found in the `package.json`, then
+The script will try to infer the settings assuming the module is hosted in github. Please verify the inferred
+configuration to verify is valid or provide your own configuration
+
 ## Usage
 ```
 Usage: changelogx [install-hook] [options]

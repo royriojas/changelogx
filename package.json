@@ -10,9 +10,10 @@
     "test": "mocha-runner 'specs/**/*.js'",
     "cover": "istanbul cover -x 'specs/**/*.js' mocha-runner 'specs/**/*.js' html text-summary",
     "watch": "npm run cover && watch-spawn -p 'specs/**/*.js' -p 'index.js' -p 'src/**/*.js' npm run cover",
-    "check": "npm run beautify && npm run eslint && npm test",
+    "lint": "npm run beautify && npm run eslint && npm test",
     "prepush": "npm run beautify-check && npm run eslint && npm test",
-    "changelog": "./bin/cli.js -f markdown -o ./changelog.md"
+    "changelog": "./bin/cli.js -f markdown -o ./changelog.md",
+    "install-hooks": "./bin/cli.js install-hook && prepush install"
   },
   "bin": {
     "changelogx": "./bin/cli.js"
@@ -38,9 +39,11 @@
     "clix": "^1.0.5",
     "es6-promise": "^2.0.1",
     "git-toplevel": "^1.0.1",
+    "github-url-from-git": "^1.4.0",
     "lodash.capitalize": "^3.0.0",
     "lodash.merge": "^3.0.3",
     "marked": "^0.3.3",
+    "mocha-runner": "^1.0.8",
     "moment": "^2.9.0",
     "read-file": "^0.1.2",
     "read-json-sync": "^1.1.0",
@@ -50,17 +53,17 @@
   },
   "devDependencies": {
     "esbeautifier": "^2.0.1",
-    "eslint": "^0.17.0",
-    "eslint-friendly-formatter": "^1.0.3",
+    "eslint": "^0.17.1",
+    "eslint-friendly-formatter": "^1.0.5",
     "istanbul": "^0.3.8",
     "mocha-runner": "^1.0.5",
-    "prepush": "^1.0.3",
+    "prepush": "^2.0.3",
     "proxyquire": "^1.4.0",
     "read-file": "^0.1.2",
     "watch-spawn": "^1.0.3"
   },
   "changelogx": {
-    "issueIDRegExp" : "#(\\d+)",
+    "issueIDRegExp": "#(\\d+)",
     "commitURL": "https://github.com/royriojas/changelogx/commit/{0}",
     "authorURL": "https://github.com/{0}",
     "issueIDURL": "https://github.com/royriojas/changelogx/issues/{0}",

@@ -11,6 +11,8 @@ module.exports = {
   //useDefaultOptions: true,
   optionator: {
     prepend: 'Usage: changelogx [install-hook] [options]',
+    append: 'When no configuration is provided, some defaults based on your `package.json` file will be used. For Example:\n\n' +
+      '"changelogx": {\n  "issueIDRegExp" : "#(\\\\d+)",\n  "commitURL": "https://github.com/royriojas/changelogx/commit/{0}",\n  "authorURL": "https://github.com/{0}",\n  "issueIDURL": "https://github.com/royriojas/changelogx/issues/{0}",\n  "projectName": "changelogx"\n}',
     options: [
       {
         heading: 'Options'

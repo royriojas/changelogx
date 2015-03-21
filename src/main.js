@@ -1,9 +1,11 @@
-var readJSON = require( 'read-json-sync' );
-var path = require( 'path' );
 var write = require( 'write' ).sync;
 var read = require( 'read-file' ).readFileSync;
 var gitDir = require( 'git-toplevel' );
 var fs = require( 'fs' );
+
+var readJSON = require( 'read-json-sync' );
+var path = require( 'path' );
+
 var nodeProcess = require( '../hooks/lib/process' );
 
 module.exports = {
@@ -30,6 +32,7 @@ module.exports = {
         cli.ok( 'Done!' );
       } );
     },
+    _getConfig: require( './infer-config' ),
     log: function ( cli ) {
 
       var opts = cli.opts;
@@ -38,6 +41,14 @@ module.exports = {
       }
 
       var cfg = cli.getConfig().changelogx;
+
+      if ( !cfg ) {
+        cli.subtle( '>> changelogx configuration not found on ', cli.configFile );
+        cfg = this._getConfig();
+
+        cli.subtle( '>> The following configuration will be used, based on your package.json. Please check it is correct: ' );
+        cli.subtle( '\n\n' + JSON.stringify( cfg, null, 2 ) + '\n\n' );
+      }
 
       var p = require( '../index' )( opts, cfg );
 
@@ -63,6 +74,8 @@ module.exports = {
       command = me.commands.log;
     }
 
-    command && command( cli );
+    command && command.apply( me.commands, [
+      cli
+    ] );
   }
 };
