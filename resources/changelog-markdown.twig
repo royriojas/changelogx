@@ -12,6 +12,7 @@
 - **{{ tag }}**
 {% for log in group.commits[feature][tag] %}
   - {{ it.renderDescription(log) }} - [{{ log.hash }}]( {{ it.format(it.commitURL, log.hash) }} ), [{{ log.author }}]({{ it.format(it.authorURL, log.author) }}), {{ it.renderDate(log.timestamp) }}
+
     {{ it.renderBody(log.body, 4) }}
 {% endfor %}
 {% endfor %}
