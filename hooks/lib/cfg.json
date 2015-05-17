@@ -10,6 +10,8 @@
     "TST": "Tests Related fixes",
     "ENH": "Enhancements",
     "NC": "Other changes",
-    "FIX": "Bug Fixes"
+    "FIX": "Bug Fixes",
+    "REVERT": "Revert",
+    "MERGE": "Merge"
   }
 }

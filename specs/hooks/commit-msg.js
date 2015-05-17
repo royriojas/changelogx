@@ -96,6 +96,36 @@ describe( 'commit-msg', function () {
     expect( me.mockProcess.exit ).to.have.been.calledWith( 1 );
   } );
 
+  it( 'should allow merge automatic messages', function () {
+    var me = this;
+    var mockFs = me.mockFs( '../fixtures/commits/good-commit-merge.txt' );
+
+    me.mockProcess.argv[ 2 ] = 'commit-file';
+
+    proxyquire( '../../hooks/commit-msg.js', {
+      fs: mockFs,
+      './lib/process': me.mockProcess,
+      './lib/console': me.mockConsole
+    } );
+
+    expect( me.mockProcess.exit ).to.not.have.been.called;
+  } );
+
+  it( 'should allow revert automatic messages', function () {
+    var me = this;
+    var mockFs = me.mockFs( '../fixtures/commits/good-commit-revert.txt' );
+
+    me.mockProcess.argv[ 2 ] = 'commit-file';
+
+    proxyquire( '../../hooks/commit-msg.js', {
+      fs: mockFs,
+      './lib/process': me.mockProcess,
+      './lib/console': me.mockConsole
+    } );
+
+    expect( me.mockProcess.exit ).to.not.have.been.called;
+  } );
+
   it( 'should fail if a commit message is too long', function () {
     var me = this;
     var mockFs = me.mockFs( '../fixtures/commits/bad-commit-too-long.txt' );

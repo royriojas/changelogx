@@ -9,7 +9,7 @@
     "eslint": "eslinter index.js 'src/**/*.js' 'lib/**/*.js' 'bin/**/*.js' 'specs/**/*.js' 'hooks/**/*.js'",
     "test": "mocha-runner 'specs/**/*.js'",
     "cover": "istanbul cover -x 'specs/**/*.js' mocha-runner 'specs/**/*.js' html text-summary",
-    "watch": "npm run cover && watch-spawn -p 'specs/**/*.js' -p 'index.js' -p 'src/**/*.js' npm run cover",
+    "watch": "watch-spawn -i -p 'specs/**/*.js' -p 'index.js' -p 'src/**/*.js' npm run cover",
     "lint": "npm run beautify && npm run eslint && npm test",
     "check": "npm run beautify-check && npm run eslint && npm test",
     "changelog": "./bin/cli.js -f markdown -o ./changelog.md",
@@ -55,10 +55,10 @@
   "devDependencies": {
     "bumpery": "^1.0.4",
     "esbeautifier": "^2.0.3",
-    "eslinter": "^1.0.0",
+    "eslinter": "^1.0.2",
     "istanbul": "^0.3.8",
     "mocha-runner": "^1.0.5",
-    "prepush": "^2.0.3",
+    "prepush": "^2.0.4",
     "proxyquire": "^1.4.0",
     "read-file": "^0.1.2",
     "watch-spawn": "^1.0.3"

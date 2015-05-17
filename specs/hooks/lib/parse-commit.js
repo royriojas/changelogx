@@ -77,4 +77,28 @@ describe( 'parse-commit', function () {
     } );
   } );
 
+  it( 'should parse an automatic commit for merge and infer the tag as MERGE', function () {
+    var result = parseCommit( 'Merge branch `some branch`' );
+
+    expect( result ).to.be.like( {
+      emptyLineAfterSubject: true,
+      tag: 'MERGE',
+      feature: '',
+      subject: 'Merge branch `some branch`',
+      body: ''
+    } );
+  } );
+
+  it( 'should parse an automatic commit for revert and infer the tag as REVERT', function () {
+    var result = parseCommit( 'Revert some potential dangerours commit' );
+
+    expect( result ).to.be.like( {
+      emptyLineAfterSubject: true,
+      tag: 'REVERT',
+      feature: '',
+      subject: 'Revert some potential dangerours commit',
+      body: ''
+    } );
+  } );
+
 } );

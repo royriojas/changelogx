@@ -40,6 +40,15 @@ module.exports = function parseCommit( commit ) {
     }
   }
 
+  if ( !tag ) {
+    if ( subject.match( /^Merge/i ) ) {
+      tag = 'MERGE';
+    }
+    if ( subject.match( /^Revert/i ) ) {
+      tag = 'REVERT';
+    }
+  }
+
   return {
     emptyLineAfterSubject: empty,
     tag: tag,
