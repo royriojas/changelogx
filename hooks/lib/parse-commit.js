@@ -50,6 +50,7 @@ module.exports = function parseCommit( commit ) {
   }
 
   return {
+    originalText: commit,
     emptyLineAfterSubject: empty,
     tag: tag,
     feature: feature,

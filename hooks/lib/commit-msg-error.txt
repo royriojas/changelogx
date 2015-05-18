@@ -25,7 +25,8 @@ Where:
   to provide some nice formatting
 
 IMPORTANT:
-  The maximum length of the message should never be more than [SUBJECT_LIMIT] characters
+- The maximum length of the message should never be more than [SUBJECT_LIMIT] characters
+- Messages starting with `Revert` or `Merge` will be considered valid commits
 
 Example:
   $ git commit

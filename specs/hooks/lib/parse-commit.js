@@ -7,6 +7,7 @@ describe( 'parse-commit', function () {
     var result = parseCommit( 'BLD: (Some Feature) Fix for DE1222' );
 
     expect( result ).to.be.like( {
+      originalText: 'BLD: (Some Feature) Fix for DE1222',
       emptyLineAfterSubject: true,
       tag: 'BLD',
       feature: 'Some Feature',
@@ -19,6 +20,7 @@ describe( 'parse-commit', function () {
     var result = parseCommit( '' );
 
     expect( result ).to.be.like( {
+      originalText: '',
       emptyLineAfterSubject: false,
       tag: '',
       feature: '',
@@ -32,6 +34,7 @@ describe( 'parse-commit', function () {
     var result = parseCommit( 'BLD: Fix for DE1222' );
 
     expect( result ).to.be.like( {
+      originalText: 'BLD: Fix for DE1222',
       emptyLineAfterSubject: true,
       tag: 'BLD',
       feature: '',
@@ -44,6 +47,7 @@ describe( 'parse-commit', function () {
     var result = parseCommit( 'BLD: (some feature)' );
 
     expect( result ).to.be.like( {
+      originalText: 'BLD: (some feature)',
       emptyLineAfterSubject: true,
       tag: 'BLD',
       feature: 'some feature',
@@ -56,6 +60,7 @@ describe( 'parse-commit', function () {
     var result = parseCommit( 'BLD: (some feature)    fix for something important DE1231\n\nThe Body will be here' );
 
     expect( result ).to.be.like( {
+      originalText: 'BLD: (some feature)    fix for something important DE1231\n\nThe Body will be here',
       emptyLineAfterSubject: true,
       tag: 'BLD',
       feature: 'some feature',
@@ -69,6 +74,7 @@ describe( 'parse-commit', function () {
     var result = parseCommit( 'FEAT: (install-hooks) better parsing of the commit messages' );
 
     expect( result ).to.be.like( {
+      originalText: 'FEAT: (install-hooks) better parsing of the commit messages',
       emptyLineAfterSubject: true,
       tag: 'FEAT',
       feature: 'install-hooks',
@@ -81,6 +87,7 @@ describe( 'parse-commit', function () {
     var result = parseCommit( 'Merge branch `some branch`' );
 
     expect( result ).to.be.like( {
+      originalText: 'Merge branch `some branch`',
       emptyLineAfterSubject: true,
       tag: 'MERGE',
       feature: '',
@@ -93,6 +100,7 @@ describe( 'parse-commit', function () {
     var result = parseCommit( 'Revert some potential dangerours commit' );
 
     expect( result ).to.be.like( {
+      originalText: 'Revert some potential dangerours commit',
       emptyLineAfterSubject: true,
       tag: 'REVERT',
       feature: '',

@@ -13,6 +13,11 @@ describe( 'infer-config', function () {
     var cfg = inferConfig();
     expect( cfg ).to.deep.equal( {
       changelogx: {
+        'ignoreRegExp': [
+          'BLD: Release',
+          'DOC: Generate Changelog',
+          'Generated Changelog'
+        ],
         issueIDRegExp: '#(\\d+)',
         commitURL: 'https://github.com/user/demo-name/commit/{0}',
         authorURL: 'https://github.com/{0}',
@@ -34,6 +39,11 @@ describe( 'infer-config', function () {
     var cfg = inferConfig();
     expect( cfg ).to.deep.equal( {
       changelogx: {
+        'ignoreRegExp': [
+          'BLD: Release',
+          'DOC: Generate Changelog',
+          'Generated Changelog'
+        ],
         issueIDRegExp: '#(\\d+)',
         commitURL: 'https://github.com/royriojas/demo-name/commit/{0}',
         authorURL: 'https://github.com/{0}',
@@ -55,6 +65,11 @@ describe( 'infer-config', function () {
     var cfg = inferConfig();
     expect( cfg ).to.deep.equal( {
       changelogx: {
+        'ignoreRegExp': [
+          'BLD: Release',
+          'DOC: Generate Changelog',
+          'Generated Changelog'
+        ],
         issueIDRegExp: '#(\\d+)',
         commitURL: 'https://github.com/royriojas/demo-name/commit/{0}',
         authorURL: 'https://github.com/{0}',
@@ -76,6 +91,11 @@ describe( 'infer-config', function () {
     var cfg = inferConfig();
     expect( cfg ).to.deep.equal( {
       changelogx: {
+        'ignoreRegExp': [
+          'BLD: Release',
+          'DOC: Generate Changelog',
+          'Generated Changelog'
+        ],
         issueIDRegExp: '#(\\d+)',
         commitURL: 'https://github.com/some/repo/commit/{0}',
         authorURL: 'https://github.com/{0}',

@@ -22,6 +22,11 @@ module.exports = function () {
 
   return {
     'changelogx': {
+      'ignoreRegExp': [
+        'BLD: Release',
+        'DOC: Generate Changelog',
+        'Generated Changelog'
+      ],
       'issueIDRegExp': '#(\\d+)',
       'commitURL': '[REPO_URL]/commit/{0}'.replace( '[REPO_URL]', repoUrl ),
       'authorURL': 'https://github.com/{0}',
