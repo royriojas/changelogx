@@ -37,14 +37,13 @@
     "npm run check"
   ],
   "dependencies": {
-    "clix": "^1.0.5",
+    "clix": "^1.0.7",
     "es6-promise": "^2.0.1",
+    "extend": "^2.0.1",
     "git-toplevel": "^1.0.1",
     "github-url-from-git": "^1.4.0",
     "lodash.capitalize": "^3.0.0",
-    "lodash.merge": "^3.0.3",
     "marked": "^0.3.3",
-    "mocha-runner": "^1.0.8",
     "moment": "^2.9.0",
     "read-file": "^0.1.2",
     "read-json-sync": "^1.1.0",
@@ -53,18 +52,22 @@
     "write": "^0.1.1"
   },
   "devDependencies": {
-    "bumpery": "^1.0.4",
-    "esbeautifier": "^2.0.3",
-    "eslinter": "^1.0.2",
-    "istanbul": "^0.3.8",
-    "mocha-runner": "^1.0.5",
+    "bumpery": "^1.0.7",
+    "esbeautifier": "^2.0.5",
+    "eslinter": "^1.0.3",
+    "istanbul": "^0.3.15",
+    "mocha-runner": "^1.0.8",
     "prepush": "^2.0.4",
-    "proxyquire": "^1.4.0",
+    "proxyquire": "^1.5.0",
     "read-file": "^0.1.2",
     "watch-spawn": "^1.0.3"
   },
   "changelogx": {
-    "ignoreRegExp": ["BLD: Release", "DOC: Generate Changelog", "Generated Changelog"],
+    "ignoreRegExp": [
+      "BLD: Release",
+      "DOC: Generate Changelog",
+      "Generated Changelog"
+    ],
     "issueIDRegExp": "#(\\d+)",
     "commitURL": "https://github.com/royriojas/changelogx/commit/{0}",
     "authorURL": "https://github.com/{0}",
