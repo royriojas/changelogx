@@ -1,5 +1,10 @@
 
 # changelogx - Changelog
+## v1.0.13
+- **Build Scripts Changes**
+  - Update deps - [a049348]( https://github.com/royriojas/changelogx/commit/a049348 ), [royriojas](https://github.com/royriojas), 10/06/2015 04:57:51
+
+    
 ## v1.0.12
 - **Features**
   - Add an option to ignore certain commits from the final changelog. Fixes [#3](https://github.com/royriojas/changelogx/issues/3) - [0d2000f]( https://github.com/royriojas/changelogx/commit/0d2000f ), [royriojas](https://github.com/royriojas), 18/05/2015 01:55:04
