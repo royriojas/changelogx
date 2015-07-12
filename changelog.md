@@ -1,5 +1,10 @@
 
 # changelogx - Changelog
+## v1.0.14
+- **Documentation**
+  - Fix the style of the code blocks - [f8ec16f]( https://github.com/royriojas/changelogx/commit/f8ec16f ), [royriojas](https://github.com/royriojas), 12/07/2015 02:11:11
+
+    
 ## v1.0.13
 - **Build Scripts Changes**
   - Update deps - [a049348]( https://github.com/royriojas/changelogx/commit/a049348 ), [royriojas](https://github.com/royriojas), 10/06/2015 04:57:51
