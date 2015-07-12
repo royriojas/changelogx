@@ -10,7 +10,7 @@ npm i -g changelogx
 ```
 
 ## add to your package.json a section like this:
- 
+
 ```javascript
 {
   "changelogx": {
@@ -63,30 +63,40 @@ When no configuration is provided, some defaults based on your `package.json` fi
 ## Examples
 
 - Generate an html changelog
+
   ```bash
   # this will create a changelog.html file
   changelogx -o changelog.html
   ```
+
 - Generate a markdown changelog
+
   ```bash
   # this will create a markdown changelog
   changelog -f markdown -o changelog.md
   ```
+
 - Generate the changelog to stdout
+
   ```bash
   # this will create a markdown changelog and print it to stdout
   changelog -f markdown
-  ``` 
+  ```
+
 - Get a changelog between 2 tags
+
   ```bash
   # this will create a markdown changelog from v0.1.0 to v2.0.0 and print it to stdout
   changelog -f markdown --tagRange=v0.1.0..v2.0.0
   ```
+
 - Only use certain type of tags
+
   ```bash
   # this will create a markdown changelog from v0.1.0 to v2.0.0 and print it to stdout ignoring other tags that don't start with `v`
   changelog -f markdown --tagRange=v0.1.0..v2.0.0 --tagPrefix=v
   ```
+
 - Exclude certain commits
   ```bash
   # this will exclude all the commits that contain the passed text. the -i option is an array
@@ -127,7 +137,7 @@ Where:
 - **SHORT_DESCRIPTION**. A very short description for the commit
 - **ISSUE_ID** (Optional). Provide one if you have it example, see: #40, #30
 - **LONG_DESCRIPTION** (Optional). A longer description of the commit. You can use markdown
-  to provide some nice formatting on the body as well. Also if you add here reference to 
+  to provide some nice formatting on the body as well. Also if you add here reference to
   issues they will be linked as well
 
 **Important**: Messages starting with `Revert` or `Merge` will be considered valid, as they usually
