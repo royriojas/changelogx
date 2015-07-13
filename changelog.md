@@ -1,5 +1,22 @@
 
 # changelogx - Changelog
+## v1.0.15
+- **Refactoring**
+  - Beautify the code with esbeautifier - [d3235cb]( https://github.com/royriojas/changelogx/commit/d3235cb ), [royriojas](https://github.com/royriojas), 12/07/2015 23:26:00
+
+    
+- **Build Scripts Changes**
+  - Update deps and remove unused files - [1e71bf3]( https://github.com/royriojas/changelogx/commit/1e71bf3 ), [royriojas](https://github.com/royriojas), 12/07/2015 23:25:44
+
+    Add npm script command `do-changelog` to automate the generation/commit
+    of the changelog.
+    
+#### commit-msg hook
+- **Bug Fixes**
+  - Fix [#6](https://github.com/royriojas/changelogx/issues/6). - [989068b]( https://github.com/royriojas/changelogx/commit/989068b ), [royriojas](https://github.com/royriojas), 12/07/2015 23:19:35
+
+    Commit messages now can contain `:` characters in the subject.
+    
 ## v1.0.14
 - **Documentation**
   - Fix the style of the code blocks - [f8ec16f]( https://github.com/royriojas/changelogx/commit/f8ec16f ), [royriojas](https://github.com/royriojas), 12/07/2015 02:11:11
