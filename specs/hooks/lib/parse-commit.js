@@ -2,6 +2,20 @@ describe( 'parse-commit', function () {
 
   var parseCommit = require( '../../../hooks/lib/parse-commit' );
 
+  it( 'should parse a commit containing two colons in it as valid (issue #6)', function () {
+
+    var result = parseCommit( 'FIX: Make the app properly honor the `min-width: 650px`' );
+
+    expect( result ).to.be.like( {
+      originalText: 'FIX: Make the app properly honor the `min-width: 650px`',
+      emptyLineAfterSubject: true,
+      tag: 'FIX',
+      feature: '',
+      subject: 'Make the app properly honor the `min-width: 650px`',
+      body: ''
+    } );
+  } );
+
   it( 'should parse a commit', function () {
 
     var result = parseCommit( 'BLD: (Some Feature) Fix for DE1222' );

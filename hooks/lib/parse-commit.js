@@ -6,7 +6,7 @@ module.exports = function parseCommit( commit ) {
     return (line[ 0 ] !== '#');
   } );
 
-  var regex = /^(.*)\:\s(.+)/;
+  var regex = /^(.*?)\:\s(.+)/;
 
   var match = lines[ 0 ].match( regex );
 
