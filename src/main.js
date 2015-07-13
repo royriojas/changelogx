@@ -74,8 +74,6 @@ module.exports = {
       command = me.commands.log;
     }
 
-    command && command.apply( me.commands, [
-      cli
-    ] );
+    command && command.apply( me.commands, [ cli ] );
   }
 };

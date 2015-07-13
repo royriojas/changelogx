@@ -7,7 +7,7 @@ module.exports = function () {
 
   var pkg = readJSON( path.resolve( nodeProcess.cwd(), 'package.json' ) );
   //console.log( 'pkg', pkg.repository );
-  var repo = pkg.repository || {};
+  var repo = pkg.repository || { };
   var url = repo.url || '';
   if ( !url ) {
     // assume github

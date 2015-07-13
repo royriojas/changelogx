@@ -12,19 +12,13 @@ describe( 'commit-msg', function () {
         readFileSync: function ( /* file , opts */ ) {
           //if ( file === 'commitFile' ) {
           return read( path.resolve( __dirname, _file ) );
-          //}
+        //}
         }
       };
     };
 
-    me.mockProcess = me.sandbox.createSpyObj( 'process', [
-      'exit'
-    ] );
-    me.mockProcess.argv = [
-      'node',
-      'script',
-      ''
-    ];
+    me.mockProcess = me.sandbox.createSpyObj( 'process', [ 'exit' ] );
+    me.mockProcess.argv = [ 'node', 'script', '' ];
 
     me.mockConsole = me.sandbox.createSpyObj( 'console', [
       'log',
