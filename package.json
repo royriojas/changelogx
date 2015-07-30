@@ -14,8 +14,12 @@
     "check": "npm run beautify-check && npm run eslint && npm test",
     "changelog": "./bin/cli.js -f markdown -o ./changelog.md",
     "do-changelog": "npm run changelog && git add ./changelog.md && git commit -m 'DOC: Generate changelog'",
-    "bump": "bumpery --verify='npm run check'",
-    "install-hooks": "./bin/cli.js install-hook && prepush install"
+    "install-hooks": "./bin/cli.js install-hook && prepush install && precommit install",
+    "pre-v": "npm run lint",
+    "post-v": "npm run do-changelog && git push --no-verify && git push --tags --no-verify",
+    "bump-major": "npm run pre-v && npm version major -m 'BLD: Release v%s' && npm run post-v",
+    "bump-minor": "npm run pre-v && npm version minor -m 'BLD: Release v%s' && npm run post-v",
+    "bump-patch": "npm run pre-v && npm version patch -m 'BLD: Release v%s' && npm run post-v"
   },
   "bin": {
     "changelogx": "./bin/cli.js"
@@ -37,15 +41,18 @@
   "prepush": [
     "npm run check"
   ],
+  "precommit": [
+    "npm run check"
+  ],
   "dependencies": {
     "clix": "^1.1.5",
     "es6-promise": "^2.3.0",
     "extend": "^2.0.1",
-    "git-toplevel": "^1.0.3",
+    "git-toplevel": "^1.1.0",
     "github-url-from-git": "^1.4.0",
     "lodash.capitalize": "^3.0.0",
-    "marked": "^0.3.3",
-    "moment": "^2.10.3",
+    "marked": "^0.3.4",
+    "moment": "^2.10.6",
     "read-file": "^0.1.2",
     "read-json-sync": "^1.1.0",
     "stringformat": "0.0.5",
@@ -53,12 +60,12 @@
     "write": "^0.1.1"
   },
   "devDependencies": {
-    "bumpery": "^1.1.1",
-    "esbeautifier": "^3.2.0",
-    "eslinter": "^2.0.5",
+    "esbeautifier": "^4.0.1",
+    "eslinter": "^2.1.0",
     "istanbul": "^0.3.17",
     "mocha-runner": "^1.0.8",
-    "prepush": "^2.0.4",
+    "precommit": "^1.0.2",
+    "prepush": "^3.1.2",
     "proxyquire": "^1.6.0",
     "read-file": "^0.1.2",
     "watch-spawn": "^1.0.3"

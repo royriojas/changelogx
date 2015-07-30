@@ -20,9 +20,9 @@ module.exports = function parseCommit( commit ) {
     subject = match[ 2 ];
   }
 
-  var subjectParser = /\((.+)\)\s*(.*)/;
+  var subjectParser = /^\((.*?)\)\s*(.*)/;
 
-  var subjectMatch = subject.match( subjectParser );
+  var subjectMatch = subject.trim().match( subjectParser );
 
   if ( subjectMatch ) {
     feature = subjectMatch[ 1 ];

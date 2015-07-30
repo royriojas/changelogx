@@ -2,6 +2,48 @@ describe( 'parse-commit', function () {
 
   var parseCommit = require( '../../../hooks/lib/parse-commit' );
 
+  it( 'should parse a commit containing a parentessis in the message position (issue #7)', function () {
+
+    var result = parseCommit( 'FIX: () result(s) were null when wrong id was received' );
+
+    expect( result ).to.be.like( {
+      originalText: 'FIX: () result(s) were null when wrong id was received',
+      emptyLineAfterSubject: true,
+      tag: 'FIX',
+      feature: '',
+      subject: 'result(s) were null when wrong id was received',
+      body: ''
+    } );
+  } );
+
+  it( 'should parse a commit with several spaces betweeen feature and subject', function () {
+
+    var result = parseCommit( 'FIX:   ()    result(s) were null when wrong id was received' );
+
+    expect( result ).to.be.like( {
+      originalText: 'FIX:   ()    result(s) were null when wrong id was received',
+      emptyLineAfterSubject: true,
+      tag: 'FIX',
+      feature: '',
+      subject: 'result(s) were null when wrong id was received',
+      body: ''
+    } );
+  } );
+
+  it( 'should parse a commit containing a parentessis in the message position (issue #7)', function () {
+
+    var result = parseCommit( 'FIX: result(s) were null when wrong id was received' );
+
+    expect( result ).to.be.like( {
+      originalText: 'FIX: result(s) were null when wrong id was received',
+      emptyLineAfterSubject: true,
+      tag: 'FIX',
+      feature: '',
+      subject: 'result(s) were null when wrong id was received',
+      body: ''
+    } );
+  } );
+
   it( 'should parse a commit containing two colons in it as valid (issue #6)', function () {
 
     var result = parseCommit( 'FIX: Make the app properly honor the `min-width: 650px`' );
