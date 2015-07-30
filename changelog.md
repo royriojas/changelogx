@@ -1,5 +1,10 @@
 
 # changelogx - Changelog
+## v1.0.16
+- **Bug Fixes**
+  - properly parse commit messages. Fixes [#7](https://github.com/royriojas/changelogx/issues/7) - [a625acd]( https://github.com/royriojas/changelogx/commit/a625acd ), [royriojas](https://github.com/royriojas), 29/07/2015 18:53:30
+
+    
 ## v1.0.15
 - **Refactoring**
   - Beautify the code with esbeautifier - [d3235cb]( https://github.com/royriojas/changelogx/commit/d3235cb ), [royriojas](https://github.com/royriojas), 12/07/2015 23:26:00
