@@ -45,10 +45,10 @@
     "npm run check"
   ],
   "dependencies": {
-    "clix": "^1.1.5",
+    "clix": "^2.0.2",
     "es6-promise": "^2.3.0",
     "extend": "^2.0.1",
-    "git-toplevel": "^1.1.0",
+    "git-toplevel": "^1.1.1",
     "github-url-from-git": "^1.4.0",
     "lodash.capitalize": "^3.0.0",
     "marked": "^0.3.4",
