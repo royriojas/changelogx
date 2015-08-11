@@ -1,5 +1,10 @@
 
 # changelogx - Changelog
+## v1.0.17
+- **Build Scripts Changes**
+  - Update to latest clix - [1f83b3e]( https://github.com/royriojas/changelogx/commit/1f83b3e ), [royriojas](https://github.com/royriojas), 11/08/2015 14:32:01
+
+    
 ## v1.0.16
 - **Bug Fixes**
   - properly parse commit messages. Fixes [#7](https://github.com/royriojas/changelogx/issues/7) - [a625acd]( https://github.com/royriojas/changelogx/commit/a625acd ), [royriojas](https://github.com/royriojas), 29/07/2015 18:53:30
