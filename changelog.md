@@ -1,5 +1,10 @@
 
 # changelogx - Changelog
+## v1.0.18
+- **Build Scripts Changes**
+  - update clix dep to get nicer log output - [c840b41]( https://github.com/royriojas/changelogx/commit/c840b41 ), [royriojas](https://github.com/royriojas), 11/08/2015 17:34:16
+
+    
 ## v1.0.17
 - **Build Scripts Changes**
   - Update to latest clix - [1f83b3e]( https://github.com/royriojas/changelogx/commit/1f83b3e ), [royriojas](https://github.com/royriojas), 11/08/2015 14:32:01
