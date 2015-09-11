@@ -6,12 +6,20 @@ module.exports = function () {
   var parse = require( 'github-url-from-git' );
 
   var pkg = readJSON( path.resolve( nodeProcess.cwd(), 'package.json' ) );
-  //console.log( 'pkg', pkg.repository );
+
+  if ( typeof pkg.repository === 'string' ) {
+    pkg.repository = { url: pkg.repository };
+  }
+
   var repo = pkg.repository || { };
   var url = repo.url || '';
   if ( !url ) {
     // assume github
-    url = pkg.author + '/' + pkg.name;
+    var author = pkg.author;
+    if ( typeof author === 'object' ) {
+      author = author.name;
+    }
+    url = author + '/' + pkg.name;
   }
 
   if ( !url.match( /^http/ ) && !url.match( /^git@github\.com/ ) ) {
