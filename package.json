@@ -46,14 +46,14 @@
   ],
   "dependencies": {
     "clix": "^2.0.3",
-    "es6-promise": "^2.3.0",
-    "extend": "^2.0.1",
+    "es6-promise": "^3.2.1",
+    "extend": "^3.0.0",
     "git-toplevel": "^1.1.1",
     "github-url-from-git": "^1.4.0",
-    "lodash.capitalize": "^3.0.0",
+    "lodash.capitalize": "^4.1.1",
     "marked": "^0.3.4",
     "moment": "^2.10.6",
-    "read-file": "^0.1.2",
+    "read-file": "^0.2.0",
     "read-json-sync": "^1.1.0",
     "stringformat": "0.0.5",
     "twig": "^0.8.2",
@@ -67,8 +67,7 @@
     "precommit": "^1.0.2",
     "prepush": "^3.1.2",
     "proxyquire": "^1.6.0",
-    "read-file": "^0.1.2",
-    "watch-spawn": "^1.0.3"
+    "watch-spawn": "^2.0.0"
   },
   "changelogx": {
     "ignoreRegExp": [

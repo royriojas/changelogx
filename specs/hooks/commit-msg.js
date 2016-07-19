@@ -1,7 +1,7 @@
 describe( 'commit-msg', function () {
   var proxyquire = require( 'proxyquire' ).noCallThru().noPreserveCache();
   var path = require( 'path' );
-  var read = require( 'read-file' ).readFileSync;
+  var read = require( 'read-file' ).sync;
 
   beforeEach( function () {
 
@@ -11,7 +11,9 @@ describe( 'commit-msg', function () {
       return {
         readFileSync: function ( /* file , opts */ ) {
           //if ( file === 'commitFile' ) {
-          return read( path.resolve( __dirname, _file ) );
+          return read( path.resolve( __dirname, _file ), {
+            encoding: 'utf8'
+          } );
         //}
         }
       };

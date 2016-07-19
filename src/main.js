@@ -1,5 +1,5 @@
 var write = require( 'write' ).sync;
-var read = require( 'read-file' ).readFileSync;
+var read = require( 'read-file' ).sync;
 var gitDir = require( 'git-toplevel' );
 var fs = require( 'fs' );
 
@@ -14,9 +14,13 @@ module.exports = {
       var config = readJSON( path.resolve( __dirname, '../hooks/lib/cfg.json' ) );
       config.maxSubjectLength = cli.opts.maxSubjectLength;
 
-      var hook = read( path.resolve( __dirname, '../hooks/commit-msg.js' ) );
+      var hook = read( path.resolve( __dirname, '../hooks/commit-msg.js' ), {
+        encoding: 'utf8'
+      } );
 
-      var helpMessage = read( path.resolve( __dirname, '../hooks/lib/commit-msg-error.txt' ) ).replace( /\n/g, '\\n' );
+      var helpMessage = read( path.resolve( __dirname, '../hooks/lib/commit-msg-error.txt' ), {
+        encoding: 'utf8'
+      } ).replace( /\n/g, '\\n' );
 
       hook = hook.replace( /require\(\s*'\.\/lib\/process'\s*\);/g, 'process;' )
         .replace( /require\(\s*'\.\/lib\/cfg\.json'\s*\);/g, JSON.stringify( config, null, 2 ) + ';' )
