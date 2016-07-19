@@ -1,5 +1,14 @@
 
 # changelogx - Changelog
+## v2.0.0
+- **Refactoring**
+  - Ugrapde read-file dependency to remove outdated graceful-fs dep - [0febb4a]( https://github.com/royriojas/changelogx/commit/0febb4a ), [Roy Riojas](https://github.com/Roy Riojas), 19/07/2016 02:03:56
+
+    
+- **Build Scripts Changes**
+  - Clean up template - [2e889b4]( https://github.com/royriojas/changelogx/commit/2e889b4 ), [Roy Riojas](https://github.com/Roy Riojas), 01/06/2016 21:36:05
+
+    
 ## v1.0.19
 - **Bug Fixes**
   - exec uses now maxBuffer=Infinity - [9b279d3]( https://github.com/royriojas/changelogx/commit/9b279d3 ), [royriojas](https://github.com/royriojas), 01/02/2016 18:05:51
