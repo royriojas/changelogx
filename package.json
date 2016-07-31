@@ -45,7 +45,7 @@
     "npm run check"
   ],
   "dependencies": {
-    "clix": "^2.0.3",
+    "clix": "^2.0.16",
     "es6-promise": "^3.2.1",
     "extend": "^3.0.0",
     "git-toplevel": "^1.1.1",
