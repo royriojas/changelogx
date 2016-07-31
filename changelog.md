@@ -1,5 +1,10 @@
 
 # changelogx - Changelog
+## v2.0.1
+- **Build Scripts Changes**
+  - update clix - [1cece99]( https://github.com/royriojas/changelogx/commit/1cece99 ), [Roy Riojas](https://github.com/Roy Riojas), 31/07/2016 04:17:52
+
+    
 ## v2.0.0
 - **Refactoring**
   - Ugrapde read-file dependency to remove outdated graceful-fs dep - [0febb4a]( https://github.com/royriojas/changelogx/commit/0febb4a ), [Roy Riojas](https://github.com/Roy Riojas), 19/07/2016 02:03:56
