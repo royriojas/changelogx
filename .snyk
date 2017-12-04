@@ -6,3 +6,6 @@ patch:
   'npm:marked:20170907':
     - marked:
         patched: '2017-10-30T04:13:03.965Z'
+  'npm:moment:20170905':
+    - clix > clix-logger > moment:
+        patched: '2017-12-04T04:14:03.236Z'
