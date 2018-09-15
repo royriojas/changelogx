@@ -8,7 +8,9 @@ module.exports = function () {
   var pkg = readJSON( path.resolve( nodeProcess.cwd(), 'package.json' ) );
 
   if ( typeof pkg.repository === 'string' ) {
-    pkg.repository = { url: pkg.repository };
+    pkg.repository = {
+      url: pkg.repository
+    };
   }
 
   var repo = pkg.repository || { };

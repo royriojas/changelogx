@@ -14,7 +14,7 @@ describe( 'commit-msg', function () {
           return read( path.resolve( __dirname, _file ), {
             encoding: 'utf8'
           } );
-        //}
+          //}
         }
       };
     };

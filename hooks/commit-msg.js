@@ -10,21 +10,21 @@ var commitMsg = module.exports = {
     return '[COMMIT_HELP]';
   },
   _ok: function () {
-    var args = [ ].slice.call( arguments );
+    var args = [].slice.call( arguments );
     args.unshift( '\x1B[33m\x1B[1m' );
     args.push( '\x1B[22m\x1B[39m' );
 
     nConsole.log.apply( nConsole, args );
   },
   _log: function () {
-    var args = [ ].slice.call( arguments );
+    var args = [].slice.call( arguments );
     args.unshift( '\x1B[90m\x1B[1m' );
     args.push( '\x1B[22m\x1B[39m' );
 
     nConsole.log.apply( nConsole, args );
   },
   _error: function () {
-    var args = [ ].slice.call( arguments );
+    var args = [].slice.call( arguments );
     args.unshift( '\x1B[31m\x1B[1m' );
     args.push( '\x1B[22m\x1B[39m' );
 
@@ -39,7 +39,7 @@ var commitMsg = module.exports = {
 
     var commit = me._parseCommit( _commitMsg );
 
-    var errorFns = [ ];
+    var errorFns = [];
 
     if ( !commit.emptyLineAfterSubject ) {
       errorFns.push( function () {
