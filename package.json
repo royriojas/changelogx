@@ -53,7 +53,7 @@
     "git-toplevel": "^1.1.1",
     "github-url-from-git": "^1.4.0",
     "lodash.capitalize": "^4.1.1",
-    "marked": "^0.3.4",
+    "marked": "^0.6.2",
     "moment": "^2.10.6",
     "read-file": "^0.2.0",
     "read-json-sync": "^1.1.0",
