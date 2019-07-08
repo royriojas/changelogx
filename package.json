@@ -21,7 +21,8 @@
     "bump-minor": "npm run pre-v && npm version minor -m 'BLD: Release v%s' && npm run post-v",
     "bump-patch": "npm run pre-v && npm version patch -m 'BLD: Release v%s' && npm run post-v",
     "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "prepublish": "npm run snyk-protect",
+    "prepare": "npm run snyk-protect"
   },
   "bin": {
     "changelogx": "./bin/cli.js"
@@ -53,14 +54,14 @@
     "git-toplevel": "^1.1.1",
     "github-url-from-git": "^1.4.0",
     "lodash.capitalize": "^4.1.1",
-    "marked": "^0.3.4",
+    "marked": "^0.4.0",
     "moment": "^2.10.6",
     "read-file": "^0.2.0",
     "read-json-sync": "^1.1.0",
     "stringformat": "0.0.5",
     "twig": "^0.8.2",
     "write": "^0.1.1",
-    "snyk": "^1.47.0"
+    "snyk": "^1.192.3"
   },
   "devDependencies": {
     "esbeautifier": "10.1.1",
