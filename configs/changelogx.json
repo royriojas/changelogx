@@ -1,9 +1,0 @@
-{
-  "changelogx": {
-    "issueIDRegExp" : "#(\\d+)",
-    "commitURL": "https://github.com/royriojas/changelogx/commit/{0}",
-    "authorURL": "https://github.com/{0}",
-    "issueIDURL": "https://github.com/royriojas/changelogx/issues/{0}",
-    "projectName": "changelogx"
-  }
-}

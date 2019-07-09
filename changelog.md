@@ -1,11 +1,23 @@
 
 # changelogx - Changelog
+## HEAD
+- **Features**
+  - Changelogx improvements - [a8331f3]( https://github.com/royriojas/changelogx/commit/a8331f3 ), [Roy](https://github.com/Roy), 09/07/2019 00:52:10
+
+    
+- **Refactoring**
+  - Make code pass more strict linting - [719b4d8]( https://github.com/royriojas/changelogx/commit/719b4d8 ), [Roy](https://github.com/Roy), 11/06/2019 04:34:18
+
+    
+  - Remove critical audit issue - [f55aa64]( https://github.com/royriojas/changelogx/commit/f55aa64 ), [Roy](https://github.com/Roy), 11/06/2019 04:20:14
+
+    
 ## v3.0.0
 - **Refactoring**
   - use git tag --list to obtain the list of tags - [b8cb797]( https://github.com/royriojas/changelogx/commit/b8cb797 ), [Roy Riojas](https://github.com/Roy Riojas), 15/09/2018 13:15:41
 
     
-- **undefined**
+- **Bug Fixes**
   - package.json & .snyk to reduce vulnerabilities - [fe9de63]( https://github.com/royriojas/changelogx/commit/fe9de63 ), [snyk-bot](https://github.com/snyk-bot), 29/10/2017 23:13:04
 
     The following vulnerabilities are fixed with a Snyk patch:

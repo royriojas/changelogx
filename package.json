@@ -3,25 +3,23 @@
   "version": "3.0.0",
   "description": "Yet another changelog generator from git commits, based on conventions and with an optional hook to enforce the rules",
   "main": "index.js",
+  "engines": {
+    "node": ">=8"
+  },
   "scripts": {
-    "beautify": "esbeautifier index.js 'src/**/*.js' 'lib/**/*.js' 'bin/**/*.js' 'specs/**/*.js' 'hooks/**/*.js'",
-    "beautify-check": "esbeautifier -k index.js 'src/**/*.js' 'lib/**/*.js' 'bin/**/*.js' 'specs/**/*.js' 'hooks/**/*.js'",
-    "eslint": "eslinter index.js 'src/**/*.js' 'lib/**/*.js' 'bin/**/*.js' 'specs/**/*.js' 'hooks/**/*.js'",
+    "eslint": "eslint --cache --cache-location node_modules/.cache/ -f friendly 'index.js' 'src/**/*.js' 'lib/**/*.js' 'bin/**/*.js' 'specs/**/*.js' 'hooks/**/*.js'",
     "test": "mocha-runner 'specs/**/*.js'",
     "cover": "istanbul cover -x 'specs/**/*.js' mocha-runner 'specs/**/*.js' html text-summary",
-    "watch": "watch-spawn -i -p 'specs/**/*.js' -p 'index.js' -p 'src/**/*.js' npm run cover",
-    "lint": "npm run beautify && npm run eslint && npm test",
-    "check": "npm run beautify-check && npm run eslint && npm test",
-    "changelog": "./bin/cli.js -f markdown -o ./changelog.md",
+    "lint": "npm run eslint -- --fix && npm test",
+    "check": "npm run eslint && npm test",
+    "changelog": "./bin/cli.js -f markdown -o ./changelog.md -c configs/changelogx.config.js",
     "do-changelog": "npm run changelog && git add ./changelog.md && git commit -m 'DOC: Generate changelog'",
     "install-hooks": "./bin/cli.js install-hook && prepush install && precommit install",
-    "pre-v": "npm run lint",
+    "pre-v": "npm run check",
     "post-v": "npm run do-changelog && git push --no-verify && git push --tags --no-verify",
     "bump-major": "npm run pre-v && npm version major -m 'BLD: Release v%s' && npm run post-v",
     "bump-minor": "npm run pre-v && npm version minor -m 'BLD: Release v%s' && npm run post-v",
-    "bump-patch": "npm run pre-v && npm version patch -m 'BLD: Release v%s' && npm run post-v",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "bump-patch": "npm run pre-v && npm version patch -m 'BLD: Release v%s' && npm run post-v"
   },
   "bin": {
     "changelogx": "./bin/cli.js"
@@ -40,49 +38,38 @@
   },
   "license": "MIT",
   "author": "Roy Riojas (http://royriojas.com)",
-  "prepush": [
-    "npm run check"
-  ],
-  "precommit": [
-    "npm run check"
-  ],
   "dependencies": {
-    "clix": "^2.0.16",
-    "es6-promise": "^3.2.1",
+    "clix": "^3.0.0",
     "extend": "^3.0.0",
     "git-toplevel": "^1.1.1",
     "github-url-from-git": "^1.4.0",
     "lodash.capitalize": "^4.1.1",
-    "marked": "^0.3.4",
-    "moment": "^2.10.6",
+    "marked": "^0.6.2",
+    "moment": "^2.24.0",
     "read-file": "^0.2.0",
     "read-json-sync": "^1.1.0",
+    "remove": "^0.1.5",
     "stringformat": "0.0.5",
-    "twig": "^0.8.2",
-    "write": "^0.1.1",
-    "snyk": "^1.47.0"
+    "twig": "^1.13.3",
+    "write": "^0.1.1"
   },
   "devDependencies": {
-    "esbeautifier": "10.1.1",
-    "eslinter": "^2.1.0",
+    "@typescript-eslint/eslint-plugin": "^1.10.2",
+    "@typescript-eslint/parser": "^1.10.2",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-formatter-friendly": "^6.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-mocha": "^5.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
     "istanbul": "0.4.5",
-    "mocha-runner": "2.0.0",
-    "precommit": "^1.0.2",
-    "prepush": "^3.1.2",
-    "proxyquire": "^1.6.0",
-    "watch-spawn": "^2.0.0"
-  },
-  "changelogx": {
-    "ignoreRegExp": [
-      "BLD: Release",
-      "DOC: Generate Changelog",
-      "Generated Changelog"
-    ],
-    "issueIDRegExp": "#(\\d+)",
-    "commitURL": "https://github.com/royriojas/changelogx/commit/{0}",
-    "authorURL": "https://github.com/{0}",
-    "issueIDURL": "https://github.com/royriojas/changelogx/issues/{0}",
-    "projectName": "changelogx"
+    "mocha-runner": "^3.0.0",
+    "prettier": "^1.18.2",
+    "proxyquire": "^1.6.0"
   },
   "snyk": true
 }

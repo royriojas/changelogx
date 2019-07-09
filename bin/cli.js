@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 
-var main = require( '../src/main' );
-var programOptions = require( '../src/options' );
+const cliLauncher = require('clix');
+const main = require('../src/main');
+const programOptions = require('../src/options');
 
-var cliLauncher = require( 'clix' );
-
-//cliLauncher.onError = function () {
+// cliLauncher.onError = function () {
 //  // handle the error here
-//};
+// };
 
-cliLauncher.launch( programOptions, function ( program ) {
-  main.run( program );
-} );
+cliLauncher.launch(programOptions, program => {
+  main.run(program);
+});
