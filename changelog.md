@@ -1,16 +1,10 @@
 
 # changelogx - Changelog
-## HEAD
-- **Features**
-  - Changelogx improvements - [a8331f3]( https://github.com/royriojas/changelogx/commit/a8331f3 ), [Roy](https://github.com/Roy), 09/07/2019 00:52:10
-
-    
+## v4.0.0
 - **Refactoring**
-  - Make code pass more strict linting - [719b4d8]( https://github.com/royriojas/changelogx/commit/719b4d8 ), [Roy](https://github.com/Roy), 11/06/2019 04:34:18
+  - Changelog improvements - [c8b95d4]( https://github.com/royriojas/changelogx/commit/c8b95d4 ), [royriojas](https://github.com/royriojas), 09/07/2019 01:21:07
 
-    
-  - Remove critical audit issue - [f55aa64]( https://github.com/royriojas/changelogx/commit/f55aa64 ), [Roy](https://github.com/Roy), 11/06/2019 04:20:14
-
+    Add the ability to specify custom tags using a config file
     
 ## v3.0.0
 - **Refactoring**
