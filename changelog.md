@@ -1,5 +1,10 @@
 
 # changelogx - Changelog
+## v5.0.1
+- **Bug Fixes**
+  - Remove snyk as it is not needed as deps were updated - [ea96fd7]( https://github.com/royriojas/changelogx/commit/ea96fd7 ), [Roy Riojas](https://github.com/Roy Riojas), 11/07/2019 16:32:18
+
+    
 ## v5.0.0
 - **Build Scripts Changes**
   - upgrade deps - [eba9cbb]( https://github.com/royriojas/changelogx/commit/eba9cbb ), [Roy Riojas](https://github.com/Roy Riojas), 11/07/2019 16:30:35
