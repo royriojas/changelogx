@@ -1,5 +1,20 @@
 
 # changelogx - Changelog
+## v5.0.0
+- **Build Scripts Changes**
+  - upgrade deps - [eba9cbb]( https://github.com/royriojas/changelogx/commit/eba9cbb ), [Roy Riojas](https://github.com/Roy Riojas), 11/07/2019 16:30:35
+
+    
+- **Bug Fixes**
+  - .snyk, package.json & package-lock.json to reduce vulnerabilities - [7613ae4]( https://github.com/royriojas/changelogx/commit/7613ae4 ), [snyk-test](https://github.com/snyk-test), 09/07/2019 01:24:30
+
+    The following vulnerabilities are fixed with an upgrade:
+    - https://snyk.io/vuln/SNYK-JS-MARKED-451341
+    
+    
+    The following vulnerabilities are fixed with a Snyk patch:
+    - https://snyk.io/vuln/SNYK-JS-LODASH-450202
+    
 ## v4.0.0
 - **Refactoring**
   - Changelog improvements - [c8b95d4]( https://github.com/royriojas/changelogx/commit/c8b95d4 ), [royriojas](https://github.com/royriojas), 09/07/2019 01:21:07
