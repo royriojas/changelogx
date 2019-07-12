@@ -1,5 +1,10 @@
 
 # changelogx - Changelog
+## v5.0.4
+- **Bug Fixes**
+  - remove source from call to opts.issueIDURL - [484e0bd]( https://github.com/royriojas/changelogx/commit/484e0bd ), [royriojas](https://github.com/royriojas), 12/07/2019 14:55:33
+
+    
 ## v5.0.3
 - **Bug Fixes**
   - issueIDURL throws when used as a function - [02e797a]( https://github.com/royriojas/changelogx/commit/02e797a ), [royriojas](https://github.com/royriojas), 12/07/2019 14:45:31
