@@ -1,5 +1,10 @@
 
 # changelogx - Changelog
+## v5.0.3
+- **Bug Fixes**
+  - issueIDURL throws when used as a function - [02e797a]( https://github.com/royriojas/changelogx/commit/02e797a ), [royriojas](https://github.com/royriojas), 12/07/2019 14:45:31
+
+    
 ## v5.0.2
 - **Bug Fixes**
   - make issueIDURL to accept a function to handle more complex cases - [1522403]( https://github.com/royriojas/changelogx/commit/1522403 ), [royriojas](https://github.com/royriojas), 12/07/2019 14:37:54
