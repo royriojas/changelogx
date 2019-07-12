@@ -1,5 +1,10 @@
 
 # changelogx - Changelog
+## v5.0.2
+- **Bug Fixes**
+  - make issueIDURL to accept a function to handle more complex cases - [1522403]( https://github.com/royriojas/changelogx/commit/1522403 ), [royriojas](https://github.com/royriojas), 12/07/2019 14:37:54
+
+    
 ## v5.0.1
 - **Bug Fixes**
   - Remove snyk as it is not needed as deps were updated - [ea96fd7]( https://github.com/royriojas/changelogx/commit/ea96fd7 ), [Roy Riojas](https://github.com/Roy Riojas), 11/07/2019 16:32:18
