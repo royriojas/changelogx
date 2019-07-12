@@ -1,6 +1,6 @@
 {
   "name": "changelogx",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "Yet another changelog generator from git commits, based on conventions and with an optional hook to enforce the rules",
   "main": "index.js",
   "engines": {
