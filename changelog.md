@@ -1,5 +1,10 @@
 
 # changelogx - Changelog
+## v5.0.6
+- **Bug Fixes**
+  - features should also use the issueIDURL as function - [d17ccbd]( https://github.com/royriojas/changelogx/commit/d17ccbd ), [Roy Riojas](https://github.com/Roy Riojas), 27/09/2019 11:33:36
+
+    
 ## v5.0.5
 - **Bug Fixes**
   - Add option to process the tags before generating the log file - [315b6d2]( https://github.com/royriojas/changelogx/commit/315b6d2 ), [Roy Riojas](https://github.com/Roy Riojas), 27/09/2019 03:22:04
