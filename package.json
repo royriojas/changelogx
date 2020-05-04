@@ -19,7 +19,9 @@
     "post-v": "npm run do-changelog && git push --no-verify && git push --tags --no-verify",
     "bump-major": "npm run pre-v && npm version major -m 'BLD: Release v%s' && npm run post-v",
     "bump-minor": "npm run pre-v && npm version minor -m 'BLD: Release v%s' && npm run post-v",
-    "bump-patch": "npm run pre-v && npm version patch -m 'BLD: Release v%s' && npm run post-v"
+    "bump-patch": "npm run pre-v && npm version patch -m 'BLD: Release v%s' && npm run post-v",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "bin": {
     "changelogx": "./bin/cli.js"
@@ -50,7 +52,8 @@
     "read-json-sync": "2.0.1",
     "stringformat": "0.0.5",
     "twig": "^1.13.3",
-    "write": "1.0.3"
+    "write": "1.0.3",
+    "snyk": "^1.317.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.10.2",
@@ -69,5 +72,6 @@
     "mocha-runner": "3.0.1",
     "prettier": "^1.18.2",
     "proxyquire": "2.1.0"
-  }
+  },
+  "snyk": true
 }
