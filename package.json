@@ -44,7 +44,7 @@
     "git-toplevel": "^1.1.1",
     "github-url-from-git": "1.5.0",
     "lodash": "4.17.14",
-    "marked": "0.7.0",
+    "marked": "1.1.1",
     "moment": "2.24.0",
     "read-file": "0.2.0",
     "read-json-sync": "2.0.1",
