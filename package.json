@@ -45,7 +45,7 @@
     "github-url-from-git": "1.5.0",
     "lodash": "4.17.14",
     "marked": "0.7.0",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "read-file": "0.2.0",
     "read-json-sync": "2.0.1",
     "stringformat": "0.0.5",
