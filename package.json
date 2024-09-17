@@ -50,7 +50,7 @@
     "read-json-sync": "2.0.1",
     "stringformat": "0.0.5",
     "twig": "^1.13.3",
-    "write": "1.0.3"
+    "write": "2.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.10.2",
